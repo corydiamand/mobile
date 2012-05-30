@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+	<title>Cordova</title>
+	<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	
+	</head>
+	
+	<body>
+	
+	<script type="text/javascript" charset="utf-8">
+	
+	// Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+	
+	//once Cordova is ready, this is run (essentially the main method)
+	//
+	function onDeviceReady()
+	{
+		//alert("ready")
+		var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+		db.transaction(populateDB);
+		db.transaction(queryDB);
+		//alert("this far");
+	}
+	
+	//this populates the database with some stuff
+	//
+	function populateDB(tx)
+	{
+		tx.executeSql('DROP TABLE IF EXISTS DEMO');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (3, "Third row")');
+        //alert("populated!");
+	}
+	
+	//this retrieves the stuff from the database
+	//
+	function queryDB(tx)
+	{
+		tx.executeSql('SELECT * FROM DEMO', [], queryDB2);
+		//alert(result.rows.length);
+		//alert("queried!");
+	}
+	
+	function queryDB2(tx, results)
+	{
+		//alert(results.rows);
+		len =-Math.abs(results.rows.length);
+		alert(Math.abs(len))
+		
+		for (var i=0; i<Math.abs(len); i++)
+			{
+				alert("Id: " + results.rows.item(i).id +" Data: "+ results.rows.item(i).data);
+			}
+	}
+	
+	
+    </script>
+	
+	<div id ="header"><i>PocketSide</i></div>
+	<div id = "addgroup">
+	<h1>+ Add Group</h1>
+	<a href="addgroup.html">Add Group</a>
+	</div>
+
+	<div id = "addindividual">
+	<h1>+ Add Individual</h1>
+	</div>
+	</body>
+	
+</html>
