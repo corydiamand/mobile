@@ -12,7 +12,46 @@
 	</head>
 	
 	<body>
-	<i>PocketSide</i>
+	<i>The Title</i>
+	<form action ="/" id="groupform">
+	Group Name: <input type="text" name="groupname" placeholder= "Add a group..." />
+	<input type="submit" value="Add Group" />
+	</form>
+	
+	<div id="result"></div>
+	
+	<script>
+	
+	/* attach a submit handler to the form */
+	$("#groupform").submit(function(event) 
+	{
+
+	    /* stop form from submitting normally */
+	    event.preventDefault(); 
+	    
+	        
+	    /* get some values from elements on the page: */
+	    
+	    	var $form = $( this ),
+	        term = $form.find( 'input[name="groupname"]' ).val(),
+	        url = $form.attr( 'action' );
+	    	//alert(term);
+		
+	    /* Send the data using post and put the results in a div */
+	    
+	     $.post( url, { groupname: term },
+	      function( data ) 
+	      {
+	          var content = $( data ).find( '#content' );
+	          $( "#result" ).empty().append( content );
+	       }
+	      );
+		
+	  });
+
+	
+	</script>
+	
 	</body>
 </html>
 	

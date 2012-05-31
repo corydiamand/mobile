@@ -40,6 +40,9 @@
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (3, "Third row")');
         //alert("populated!");
+        
+        //create groups table
+        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, name)');
 	}
 	
 	//this retrieves the stuff from the database
@@ -59,7 +62,7 @@
 		
 		for (var i=0; i<Math.abs(len); i++)
 			{
-				alert("Id: " + results.rows.item(i).id +" Data: "+ results.rows.item(i).data);
+			//	alert("Id: " + results.rows.item(i).id +" Data: "+ results.rows.item(i).data);
 			}
 	}
 	
