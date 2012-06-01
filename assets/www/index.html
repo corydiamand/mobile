@@ -34,35 +34,40 @@
 	//
 	function populateDB(tx)
 	{
-		tx.executeSql('DROP TABLE IF EXISTS DEMO');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
-        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (3, "Third row")');
-        //alert("populated!");
+	//	tx.executeSql('DROP TABLE IF EXISTS DEMO');
+    //    tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+    //    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+    //    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+    //    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (3, "Third row")');
+       
         
-        //create groups table
-        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, name)');
+        //create group table
+        tx.executeSql('DROP TABLE IF EXISTS GROUPS');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id int NOT NULL AUTO_INCREMENT, data)');
+        tx.executeSql('INSERT INTO GROUPS (data) VALUES ("group")');
+        tx.executeSql('INSERT INTO GROUPS (data) VALUES ("group2")');
+        // alert("populated!");
 	}
 	
 	//this retrieves the stuff from the database
 	//
 	function queryDB(tx)
 	{
-		tx.executeSql('SELECT * FROM DEMO', [], queryDB2);
+		tx.executeSql('SELECT * FROM GROUPS', [], queryDB2);
 		//alert(result.rows.length);
-		//alert("queried!");
+		alert("queried!");
 	}
 	
 	function queryDB2(tx, results)
 	{
-		//alert(results.rows);
-		len =-Math.abs(results.rows.length);
-		alert(Math.abs(len))
+		//len =-Math.abs(results.rows.length);
+		len = results.rows.length;
+		// alert(len);
+	    // alert(Math.abs(len))
 		
 		for (var i=0; i<Math.abs(len); i++)
 			{
-			//	alert("Id: " + results.rows.item(i).id +" Data: "+ results.rows.item(i).data);
+				alert("Id: " + results.rows.item(i).id +" Data: "+ results.rows.item(i).data);
 			}
 	}
 	
