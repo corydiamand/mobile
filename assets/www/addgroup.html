@@ -35,17 +35,15 @@
 	    	var $form = $( this ),
 	        term = $form.find( 'input[name="groupname"]' ).val(),
 	        url = $form.attr( 'action' );
-	    	//alert(term);
-		
-	    /* Send the data using post and put the results in a div */
-	    
-	     $.post( url, { groupname: term },
-	      function( data ) 
-	      {
-	          var content = $( data ).find( '#content' );
-	          $( "#result" ).empty().append( content );
-	       }
-	      );
+	    	alert(term);
+	    	
+	    	function groupToDB(tx)
+	    	{
+	    		tx.executeSql('INSERT INTO GROUPS (data) VALUES ("term")');
+	    	}
+	    	
+	    	var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+			db.transaction(groupToDB);
 		
 	  });
 
