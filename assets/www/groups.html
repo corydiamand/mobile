@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<title>Groups</title>
+
+
+	<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+ 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script> 
+	
+	</head>
+	
+	<body onload ="onBodyLoad()">
+	
+	<script type="text/javascript" charset="utf-8">
+	
+	// Wait for Cordova to load
+    //
+    function onBodyLoad() {
+    document.addEventListener("deviceready", onDeviceReady, false);
+    alert("body load!")
+	}
+	//once Cordova is ready, this is run (essentially the main method)
+	//
+	function onDeviceReady()
+	{
+		alert("hello world")
+		alert("seven")
+	}
+	
+	alert("hello werld")
+	</script>
+	hello
+</body>
+</html>
