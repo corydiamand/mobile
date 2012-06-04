@@ -11,9 +11,10 @@
 	
 	</head>
 	
-	<body>
+	<body onload ="onBodyLoad()">
+	
 	<i>The Title</i>
-	<form action ="/" id="groupform">
+	<form action ="index.html" id="groupform">
 	Group Name: <input type="text" name="groupname" placeholder= "Add a group..." />
 	<input type="submit" value="Add Group" />
 	</form>
@@ -22,6 +23,13 @@
 	
 	<script>
 	
+	function onBodyLoad() 
+	{
+	    document.addEventListener("deviceready", onDeviceReady, false);
+	}
+	
+	function onDeviceReady()
+	{
 	/* attach a submit handler to the form */
 	$("#groupform").submit(function(event) 
 	{
@@ -30,7 +38,7 @@
 	    event.preventDefault(); 
 	    
 	        
-	    /* get some values from elements on the page: */
+	    /* get value from the form after submitting: */
 	    
 	    	var $form = $( this ),
 	        term = $form.find( 'input[name="groupname"]' ).val(),
@@ -39,14 +47,23 @@
 	    	
 	    	function groupToDB(tx)
 	    	{
-	    		tx.executeSql('INSERT INTO GROUPS (data) VALUES ("term")');
+	    		//var stext = "'INSERT INTO GROUPS (data) VALUES (\"term\")'"
+	    		//tx.executeSql('INSERT INTO GROUPS (data) VALUES ("term")');
+	    		//alert(stext);
+	    		tx.executeSql(
+	    				
+	    						'INSERT INTO GROUPS (data) VALUES (?);',
+	    						[term]
+	    		
+	    					  );
 	    	}
 	    	
 	    	var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
 			db.transaction(groupToDB);
 		
 	  });
-
+	
+	}; //end onDeviceReady
 	
 	</script>
 	
