@@ -13,26 +13,62 @@
 	
 	</head>
 	
-	<body onload ="onBodyLoad()">
+	<body onload="init()">
 	
+	<div id="addgroup">Add a group</div>
+	<div id="groups">groups shown below:</div>
 	<script type="text/javascript" charset="utf-8">
 	
-	// Wait for Cordova to load
-    //
-    function onBodyLoad() {
-    document.addEventListener("deviceready", onDeviceReady, false);
-    alert("body load!")
-	}
-	//once Cordova is ready, this is run (essentially the main method)
-	//
-	function onDeviceReady()
+	alert("im here 3")
+	
+	function init()
 	{
-		alert("hello world")
-		alert("seven")
+//		var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+//		db.transaction(populateDB);
+//		db.transaction(queryDB);
+		alert("im here2");
+	}
+//	}
+	function populateDB(tx)
+	{
+	//	tx.executeSql('DROP TABLE IF EXISTS DEMO');
+    //    tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+    //    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+    //    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+    //    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (3, "Third row")');
+       
+        
+        //create group table
+        //tx.executeSql('DROP TABLE IF EXISTS GROUPS');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id INTEGER PRIMARY KEY AUTOINCREMENT, data)');
+        //tx.executeSql('INSERT INTO GROUPS (data) VALUES ("group")');
+       // tx.executeSql('INSERT INTO GROUPS (data) VALUES ("group2")');
+        // alert("populated!");
+	}
+
+	function queryDB(tx)
+	{
+		tx.executeSql('SELECT * FROM GROUPS', [], queryDB2);
+		//alert(result.rows.length);
+		//alert("queried!");
 	}
 	
-	alert("hello werld")
+	function queryDB2(tx, results)
+	{
+		//len =-Math.abs(results.rows.length);
+		len = results.rows.length;
+		// alert(len);
+	    // alert(Math.abs(len))
+	    var lastDiv = "#groups"
+		
+		for (var i=0; i<Math.abs(len); i++)
+			{
+				//alert("Id: " + results.rows.item(i).id +" Data: "+ results.rows.item(i).data);
+				$(lastDiv).append("<div>"+results.rows.item(i).data+"</div>")
+			}
+	}
+	
 	</script>
-	hello
+	
 </body>
 </html>
