@@ -4,76 +4,28 @@
 	<head>
 	<title>Home</title>
 	<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
-	
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
- 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script> 
-    
-  
-	
+	 
+<!-- 	<script src="jquery-1.7.2.min.js"></script> -->
 	</head>
 	
-	<body onload ="onBodyLoad()">
+	<body onload="init()">
 	
 	<script type="text/javascript" charset="utf-8">
 	
 	// Wait for Cordova to load
     //
-    function onBodyLoad() {
+ 	function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
+    alert("on page init")
 	}
 	//once Cordova is ready, this is run (essentially the main method)
 	//
 	function onDeviceReady()
 	{
-		//alert("ready")
-		var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
-		db.transaction(populateDB);
-		db.transaction(queryDB);
-		//alert("this far");
+		alert("on device ready")
 	}
 	
-	//this populates the database with some stuff
-	//
-	function populateDB(tx)
-	{
-	//	tx.executeSql('DROP TABLE IF EXISTS DEMO');
-    //    tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-    //    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-    //    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
-    //    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (3, "Third row")');
-       
-        
-        //create group table
-        //tx.executeSql('DROP TABLE IF EXISTS GROUPS');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id INTEGER PRIMARY KEY AUTOINCREMENT, data)');
-        //tx.executeSql('INSERT INTO GROUPS (data) VALUES ("group")');
-       // tx.executeSql('INSERT INTO GROUPS (data) VALUES ("group2")');
-        // alert("populated!");
-	}
 	
-	//this retrieves the stuff from the database
-	//
-	function queryDB(tx)
-	{
-		tx.executeSql('SELECT * FROM GROUPS', [], queryDB2);
-		//alert(result.rows.length);
-		//alert("queried!");
-	}
-	
-	function queryDB2(tx, results)
-	{
-		//len =-Math.abs(results.rows.length);
-		len = results.rows.length;
-		// alert(len);
-	    // alert(Math.abs(len))
-	    var lastDiv = "#groups"
-		
-		for (var i=0; i<Math.abs(len); i++)
-			{
-				//alert("Id: " + results.rows.item(i).id +" Data: "+ results.rows.item(i).data);
-				$(lastDiv).append("<div>"+results.rows.item(i).data+"</div>")
-			}
 	}
 	
 	
@@ -85,13 +37,15 @@
 	<a href="addgroup.html">Add Groups</a>
 	</div>
 
-	<div id = "addindividual">
-	<h1>+ Add Individual</h1>
+	<div id = "map">
+	<a href="map.html"><h1>Map</h1></a>
 	</div>
-	</body>
+	
 	
 	<div id = "groups">
+	<h1>Groups</h1>
 	<a href="groups.html">Groups</a>
 	</div>
-	
+	</body>
+	<script src=zepto.min.js></script>
 </html>

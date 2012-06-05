@@ -4,10 +4,7 @@
 	<head>
 	<title>Add Group</title>
 	<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
-	
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<!-- 	<script src="jquery-1.7.2.min.js"></script> -->
 	
 	</head>
 	
@@ -44,6 +41,7 @@
 	        term = $form.find( 'input[name="groupname"]' ).val(),
 	        url = $form.attr( 'action' );
 	    	alert(term);
+	    	navigator.notification.alert(term)
 	    	
 	    	function groupToDB(tx)
 	    	{
@@ -68,5 +66,6 @@
 	</script>
 	
 	</body>
+	<script src=zepto.min.js></script>
 </html>
 	
