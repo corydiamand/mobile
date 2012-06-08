@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+#test
+	{
+		width: 100px;
+		height: 100px;
+		border: 1px solid black;
+	}
+
+#mbg1 {
+	height: 100px;
+	width: 100px;
+	border: 1px solid black;
+	top: 0;
+}
+
+#mbg2 {
+	height: 100px;
+	width: 100px;
+	border: 1px solid black;
+}

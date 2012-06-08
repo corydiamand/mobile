@@ -43,7 +43,7 @@
         //tx.executeSql('INSERT INTO GROUPS (data) VALUES ("group")');
        // tx.executeSql('INSERT INTO GROUPS (data) VALUES ("group2")');
         // alert("populated!");
-	}
+	};
 
 	function queryDB(tx)
 	{
@@ -58,14 +58,14 @@
 		len = results.rows.length;
 		// alert(len);
 	    // alert(Math.abs(len))
-	    var lastDiv = $('#groups')
+	    var lastDiv = $('#groups');
 	   
 		
 		for (var i=0; i<Math.abs(len); i++)
 			{
 				//alert("Id: " + results.rows.item(i).id +" Data: "+ results.rows.item(i).data);
-				lastDiv.append("<div>"+results.rows.item(i).data+"</div>")
-			}
+				lastDiv.append("<div>"+results.rows.item(i).data+"</div>");
+			};
 	}
 	
 	</script>

@@ -28,7 +28,7 @@
 	function onDeviceReady()
 	{
 	/* attach a submit handler to the form */
-	$("#groupform").submit(function(event) 
+	$("#groupform").submit(function(event) ;
 	{
 
 	    /* stop form from submitting normally */
@@ -41,7 +41,7 @@
 	        term = $form.find( 'input[name="groupname"]' ).val(),
 	        url = $form.attr( 'action' );
 	    	alert(term);
-	    	navigator.notification.alert(term)
+	    	navigator.notification.alert(term);
 	    	
 	    	function groupToDB(tx)
 	    	{
